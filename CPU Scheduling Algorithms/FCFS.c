@@ -15,13 +15,13 @@ int main() {
 
     // Calculate waiting and turnaround times
     for (int i = 1; i < n; i++){ 
-        wait[i] = wait[i-1] + burst[i-1];
+        wait[i] = wait[i-1] + burst[i-1]; //wait[i-1]->wait time of previous process
     }
 
     for (int i = 0; i < n; i++) {
         turn[i] = wait[i] + burst[i];
-        avgWait += wait[i];
-        avgTurn += turn[i];
+        avgWait += wait[i]; //add all waiting times
+        avgTurn += turn[i]; //add all turnaround times
     }
 
     // Output results
