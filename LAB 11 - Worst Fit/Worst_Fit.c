@@ -7,6 +7,7 @@ int main() {
     // Input number of blocks and their sizes
     printf("Enter number of blocks: ");
     scanf("%d", &num_blocks);
+
     for (int i = 0; i < num_blocks; i++) {
         printf("Block %d size: ", i + 1);
         scanf("%d", &block_size[i]);
@@ -15,6 +16,7 @@ int main() {
     // Input number of processes and their sizes
     printf("Enter number of processes: ");
     scanf("%d", &num_processes);
+
     for (int i = 0; i < num_processes; i++) {
         printf("Process %d size: ", i + 1);
         scanf("%d", &process_size[i]);
@@ -43,6 +45,7 @@ int main() {
 
     // Output results
     printf("\nProcess\tBlock\n");
+    
     for (int i = 0; i < num_processes; i++) {
         if (allocation[i] == -1) {
             printf("Process %d cannot be allocated\n", i + 1);
