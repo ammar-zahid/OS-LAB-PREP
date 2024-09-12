@@ -9,15 +9,19 @@ int main()
     scanf("%d", &n);
 
     // Input burst time for each process
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         printf("Burst time for process %d: ", i + 1);
         scanf("%d", &burst[i]);
     }
 
     // Sorting burst times (SJF logic)
-    for (int i = 0; i < n; i++){
-        for (int j = i + 1; j < n; j++){
-            if (burst[i] > burst[j]){
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (burst[i] > burst[j])
+            {
                 // Swap burst times
                 temp = burst[i];
                 burst[i] = burst[j];
