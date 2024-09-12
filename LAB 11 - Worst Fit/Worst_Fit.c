@@ -47,7 +47,7 @@ int main() {
         if (allocation[i] == -1) {
             printf("Process %d cannot be allocated\n", i + 1);
         } else {
-            printf("Process %d -> Block %d\n", i + 1, allocation[i] + 1);
+            printf("Process %d <- Block %d\n", i + 1, allocation[i] + 1);
         }
     }
 
