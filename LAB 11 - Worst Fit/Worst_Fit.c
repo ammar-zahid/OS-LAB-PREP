@@ -28,7 +28,7 @@ int main()
     // Worst-fit allocation
     for (int i = 0; i < num_processes; i++) // Har process ko allocate karo
     {
-        int worst_index = -1; // Koi block abhi tak allocate nahi hua
+        int block_index = -1; // Koi block abhi tak allocate nahi hua
         int max_size = 0;     // Sabse bara block track karne k liye
 
         for (int j = 0; j < num_blocks; j++) // Har block ko check karo
@@ -36,15 +36,15 @@ int main()
             if (block_size[j] >= process_size[i] && block_size[j] > max_size)
             {
                 max_size = block_size[j]; // Sabse bara block size update karo
-                worst_index = j;          // Block ka index update karo
+                block_index = j;          // Block ka index update karo
             }
         }
 
-        allocation[i] = worst_index; // Allocate kiye gaye block ka index store karo
+        allocation[i] = block_index; // Allocate kiye gaye block ka index store karo
 
-        if (worst_index != -1)
+        if (block_index != -1) // agar block process ko de diya hai lekin uska size process se bara hai
         {
-            block_size[worst_index] -= process_size[i]; // Block size ko process size se kam karo
+            block_size[block_index] -= process_size[i]; // Process size ko block size mein se minus kro
         }
     }
 
