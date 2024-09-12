@@ -4,13 +4,12 @@
 
 int main()
 {
-    int pages[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2};
-    int n = sizeof(pages) / sizeof(pages[0]); // Total number of pages
+    int pages[13] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2};
     int frame[FRAME_SIZE] = {-1, -1, -1};  // Initialize frames as empty
     int pageFaults = 0;
 
     // Loop through each page in the sequence
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < 13; i++)
     {
         int pageFound = 0; // check if the page is already in the frame
 
@@ -27,7 +26,7 @@ int main()
         // If the page is not found, we need to replace it (page fault)
         if (!pageFound)
         {
-            int lruIndex = 0; // Variable to track the index of the least recently used page
+            int lruIndex = 0; // track the index of the least recently used page
 
             // identify the least recently used page
             for (int j = 1; j < FRAME_SIZE; j++)
