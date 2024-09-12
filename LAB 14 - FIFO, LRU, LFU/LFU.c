@@ -4,13 +4,12 @@
 
 int main()
 {
-    int pages[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2};
-    int n = sizeof(pages) / sizeof(pages[0]); // Number of page references
-    int frame[FRAME_SIZE] = {-1, -1, -1};     // Frames initialized as empty
-    int count[FRAME_SIZE] = {0};              // Stores frequency of pages in frames
-    int pageFaults = 0;                       // Counts the number of page faults
+    int pages[13] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2};
+    int frame[FRAME_SIZE] = {-1, -1, -1}; // Frames initialized as empty
+    int count[FRAME_SIZE] = {0}; // Stores frequency of pages in frames
+    int pageFaults = 0;
 
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < 13; i++)
     {
         int pageFound = 0;
 
@@ -20,7 +19,7 @@ int main()
             if (frame[j] == pages[i])
             {
                 pageFound = 1; // Page hit
-                count[j]++;    // Increase frequency count
+                count[j]++;
                 break;
             }
         }
