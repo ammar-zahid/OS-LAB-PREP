@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+#define FRAME_SIZE 3 // Number of frames
+
+int main()
+{
+    int pages[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2};
+    int n = sizeof(pages) / sizeof(pages[0]); // Number of page references
+    int frame[FRAME_SIZE] = {-1, -1, -1};     // Frames initialized as empty
+    int count[FRAME_SIZE] = {0};              // Stores frequency of pages in frames
+    int pageFaults = 0;                       // Counts the number of page faults
+
+    for (int i = 0; i < n; i++)
+    {
+        int pageFound = 0;
+
+        // Check if the page is already in a frame
+        for (int j = 0; j < FRAME_SIZE; j++)
+        {
+            if (frame[j] == pages[i])
+            {
+                pageFound = 1; // Page hit
+                count[j]++;    // Increase frequency count
+                break;
+            }
+        }
+
+        // If page is not in memory, replace the least frequently used (LFU) page
+        if (!pageFound)
+        {
+            int lfu = 0;
+            for (int j = 1; j < FRAME_SIZE; j++)
+            {
+                if (count[j] < count[lfu])
+                {
+                    lfu = j; // Find least frequently used page
+                }
+            }
+            frame[lfu] = pages[i]; // Replace LFU page
+            count[lfu] = 1;        // Reset frequency count for the new page
+            pageFaults++;          // Page fault occurred
+        }
+
+        // Print current frame status
+        printf("Frame: ");
+        for (int j = 0; j < FRAME_SIZE; j++)
+        {
+            if (frame[j] != -1)
+                printf("%d ", frame[j]);
+        }
+        printf("\n");
+    }
+
+    printf("Total Page Faults: %d\n", pageFaults); // Output total page faults
+    return 0;
+}
