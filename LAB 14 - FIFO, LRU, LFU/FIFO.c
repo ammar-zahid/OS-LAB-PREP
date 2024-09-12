@@ -4,8 +4,7 @@
 
 int main()
 {
-    int pages[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2};
-    int totalPages = sizeof(pages) / sizeof(pages[0]);
+    int pages[13] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2};
     int frames[FRAME_SIZE];
     int pageFaults = 0;
     int nextFramePos = 0; // Tracks the frame position to replace
@@ -17,9 +16,9 @@ int main()
     }
 
     // Process each page request
-    for (int i = 0; i < totalPages; i++)
+    for (int i = 0; i < 13; i++)
     {
-        int pageFound = 0; // Check if the page is already loaded
+        int pageFound = 0; // Check if the page is already loaded (hit)
 
         // Check if the page is in any frame
         for (int j = 0; j < FRAME_SIZE; j++)
